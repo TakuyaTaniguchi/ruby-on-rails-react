@@ -1,12 +1,15 @@
 {
+    "parser": "@typescript-eslint/parser", // TypeScriptのパーサーを指定
     "extends": [
       "eslint:recommended",
       "plugin:react/recommended",
-      "plugin:react-hooks/recommended"
+      "plugin:react-hooks/recommended",
+      "plugin:@typescript-eslint/recommended" // TypeScriptの推奨ルールを追加
     ],
     "plugins": [
       "react",
-      "react-hooks"
+      "react-hooks",
+      "@typescript-eslint" // TypeScript用のプラグインを追加
     ],
     "rules": {
       "react-hooks/rules-of-hooks": "error", // Hooksのルールを違反した場合はエラーとする
