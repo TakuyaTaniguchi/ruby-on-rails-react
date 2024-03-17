@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show update destroy ]
 
   def index
-    @users = User.all
-    render json: @users
+    @user = User.includes(:memos).find(params[:id])
+    render json: @user.as_json(include: :memos)
   end
 
   def show
