@@ -27,13 +27,18 @@ export function UserDetailComponent() {
   ));
 
   return (
-    <div>
-      <p>ユーザー詳細: ID:{id}</p>
-      <p>{user?.id}</p>
-      <p>{user?.name}</p>
-      <p>メモ</p>
-      <div>
-        {memos}
+    <div className="user-detail">
+      <div className="user-detail-info">
+          <p>ユーザー詳細: ID:{id}</p>
+          <p>{user?.id}</p>
+          <p>{user?.name}</p>
+          <p>メモ</p>
+          <div>
+            {memos}
+          </div>
+      </div>
+      <div className='create-memo'>
+        メモを作る
       </div>
     </div>
   );
