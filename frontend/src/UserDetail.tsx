@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom';
 export function UserDetailComponent() {
   const { id } = useParams();
   const [user, setUser] = useState<{ id: string, name: string, memos: { id: number ,user_id: number ,title:string ,content: string }[] } | null>(null); // userの状態を管理
-
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
   useEffect(() => {
     getDetail(id ?? '');
   }, [id]); // idが変わった時に再度実行
@@ -39,6 +40,11 @@ export function UserDetailComponent() {
       </div>
       <div className='create-memo'>
         メモを作る
+        <div className='memo-area'>
+          <div>タイトル</div>
+          <input type="text" name="title" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+          <textarea name="content" value={content} onChange={(e)=>{setContent(e.target.value)}} />
+        </div>
       </div>
     </div>
   );

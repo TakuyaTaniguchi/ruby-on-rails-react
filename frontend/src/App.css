@@ -56,3 +56,8 @@
   justify-content: space-around;
 }
 
+.memo-area{
+  display: flex;
+  flex-flow: column;
+}
+
