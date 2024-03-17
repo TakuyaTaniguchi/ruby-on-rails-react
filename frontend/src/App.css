@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.list {
+  color: salmon;
+  background-color: aliceblue;
+}
+
