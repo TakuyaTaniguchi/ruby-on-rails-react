@@ -14,25 +14,17 @@ function App() {
     <div className="App">
       <Router>
           <header className="App-header">
+            Header
+          </header>
+          <div className='App-body'>
             <Routes>
-              <Route path="/" element={<div>メインインデッKす</div>} />
-              <Route path="/hoge" element={<div>Home</div>} />
+              <Route path="/" element={<MyPageComponent />} />
               <Route path="/user/:id" element={<UserDetailComponent/>} />
             </Routes>
-            <MyPageComponent />
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.tsx</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
+          </div>
+          <footer className="App-footer">
+            Footer
+          </footer>
       </Router>
     </div>
   );
