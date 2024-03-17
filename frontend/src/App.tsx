@@ -5,6 +5,9 @@ import './App.css';
 import { MyPageComponent } from "./MyPage"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+// component
+import { UserDetailComponent } from "./UserDetail";
+
 
 function App() {
   return (
@@ -12,7 +15,9 @@ function App() {
       <Router>
           <header className="App-header">
             <Routes>
+              <Route path="/" element={<div>メインインデッKす</div>} />
               <Route path="/hoge" element={<div>Home</div>} />
+              <Route path="/user/:id" element={<UserDetailComponent/>} />
             </Routes>
             <MyPageComponent />
             <img src={logo} className="App-logo" alt="logo" />

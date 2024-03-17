@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 export function UsersComponent() {
@@ -26,7 +27,7 @@ export function UsersComponent() {
               <p>{user.id}</p>
               <p>{user.name}</p>
               <p>{user.email}</p>
-              <a href={`/users/${user.id}`}>{user.id}:{user.name}</a>
+              <Link to={`/user/${user.id}`}>詳細 : {user.id}:{user.name}</Link>
 
             </div>
             
