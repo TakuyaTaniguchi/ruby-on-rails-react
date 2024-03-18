@@ -10,6 +10,16 @@ export function UserDetailComponent() {
     getDetail(id ?? '');
   }, [id]); // idが変わった時に再度実行
 
+  const createMemo = () => {
+    fetch('http://localhost:3000/memos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user_id: id, title: title, content: content}),
+    })
+  }
+
   const getDetail = (id: string) => {
     fetch(`http://localhost:3000/users/${id}`)
       .then(response => response.json())
@@ -39,9 +49,8 @@ export function UserDetailComponent() {
           </div>
       </div>
       <div className='create-memo'>
-        メモを作る
+        <button onClick={createMemo}>メモを作る</button>
         <div className='memo-area'>
-          <div>タイトル</div>
           <input type="text" name="title" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
           <textarea name="content" value={content} onChange={(e)=>{setContent(e.target.value)}} />
         </div>
