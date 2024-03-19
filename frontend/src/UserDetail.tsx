@@ -11,12 +11,12 @@ export function UserDetailComponent() {
   }, [id]); // idが変わった時に再度実行
 
   const createMemo = () => {
-    fetch('http://localhost:3000/memos', {
+    fetch(`http://localhost:3000/users/${user?.id}/memos`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ user_id: id, title: title, content: content}),
+      body: JSON.stringify({ title: title, content: content}),
     })
   }
 
@@ -24,16 +24,29 @@ export function UserDetailComponent() {
     fetch(`http://localhost:3000/users/${id}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setUser(data); // 取得したデータでuserの状態を更新
       })
       .catch(error => console.error('Error:', error));
   }
 
+  const deleteMemo = (id: number) => {
+    if (window.confirm("メモを削除しますか？")) {
+      fetch(`http://localhost:3000/users/${user?.id}/memos/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+    } 
+  }
+
   const memos = user?.memos.map((memo) => (
-    <div key={memo.id}>
+    <div key={memo.id} className='memo'>
       <p>{memo.title}</p>
       <p>{memo.content}</p>
+      <button onClick={()=>{
+        deleteMemo(memo.id)
+      }}>削除</button>
     </div>
   ));
 
@@ -44,7 +57,7 @@ export function UserDetailComponent() {
           <p>{user?.id}</p>
           <p>{user?.name}</p>
           <p>メモ</p>
-          <div>
+          <div className='memo-contents'>
             {memos}
           </div>
       </div>

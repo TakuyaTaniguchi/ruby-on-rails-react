@@ -61,3 +61,13 @@
   flex-flow: column;
 }
 
+.memo-contents{
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
+}
+
+.memo{
+  padding: 12px;
+  background-color: lemonchiffon;
+}
