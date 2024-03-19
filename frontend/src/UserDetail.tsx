@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
 export function UserDetailComponent() {
@@ -9,10 +9,19 @@ export function UserDetailComponent() {
   const [isChange, setIsChange] = useState(true);
   const [editingId, setEditingId] = useState(null as number | null);
   const [tempTitle, setTempTitle] = useState("");
+  const HTMLTitleInput = useRef<HTMLInputElement>(null);
+
 
   useEffect(() => {
     getDetail(id ?? '');
   }, [id]); // idが変わった時に再度実行
+
+  useEffect(() => {
+    // input要素が表示されている場合はフォーカスを当てる
+    if (editingId !== null) {
+      HTMLTitleInput.current?.focus();
+    }
+  }, [editingId]);
 
   const createMemo = () => {
     fetch(`http://localhost:3000/users/${user?.id}/memos`, {
@@ -56,13 +65,16 @@ export function UserDetailComponent() {
     }).then(response => response.json())
     .then(data => {
       setUser((curentUser) => {
-        curentUser?.memos.map((m) => {
-          if(m.id === data.id){
-            m.title = data.title;
-            m.content = data.content;
+        if (!curentUser) return null;
+
+        const updateMemos = curentUser.memos.map((m) => {
+          if (m.id === data.id) {
+            return {...m, title: data.title, content: data.content}
           }
+          return m;
         })
-        return curentUser;
+
+        return {...curentUser,memos: updateMemos}
       });
 
     
@@ -80,9 +92,10 @@ export function UserDetailComponent() {
         { memo.id !== editingId ? (
             <p onClick={()=>{
               clickChange(memo)
-            }}>{memo.title}</p>
+            }}
+            >{memo.title}</p>
           ) : (
-            <input type="text" value={tempTitle} onChange={(e)=>{setTempTitle(e.target.value)}} onBlur={
+            <input ref={HTMLTitleInput} type="text" value={tempTitle} onChange={(e)=>{setTempTitle(e.target.value)}} onBlur={
               () => {
                 clickChange(memo)
                 updateMemo({id :memo.id ,title: tempTitle, content: memo.content})
