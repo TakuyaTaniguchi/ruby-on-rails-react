@@ -1,6 +1,6 @@
 class MemosController < ApplicationController
   before_action :set_user
-  before_action :set_memo, only: [:show, :destroy]
+  before_action :set_memo, only: [:show, :destroy, :update]
 
   def index
     @memos = @user.memos
@@ -18,6 +18,11 @@ class MemosController < ApplicationController
     else
       render json: @memo.errors, status: :unprocessable_entity
     end
+  end
+
+  def update
+    @memo.update(memo_params)
+    render json: @memo
   end
 
   def destroy

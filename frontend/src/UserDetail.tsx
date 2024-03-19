@@ -6,6 +6,10 @@ export function UserDetailComponent() {
   const [user, setUser] = useState<{ id: string, name: string, memos: { id: number ,user_id: number ,title:string ,content: string }[] } | null>(null); // userの状態を管理
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [isChange, setIsChange] = useState(true);
+  const [editingId, setEditingId] = useState(null as number | null);
+  const [tempTitle, setTempTitle] = useState("");
+
   useEffect(() => {
     getDetail(id ?? '');
   }, [id]); // idが変わった時に再度実行
@@ -40,9 +44,52 @@ export function UserDetailComponent() {
     } 
   }
 
+  const updateMemo = (memo: {id:number, title :string ,content: string}) => {
+    setEditingId(null);
+
+    fetch(`http://localhost:3000/users/${user?.id}/memos/${memo.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title: memo.title, content: memo.content}),
+    }).then(response => response.json())
+    .then(data => {
+      setUser((curentUser) => {
+        curentUser?.memos.map((m) => {
+          if(m.id === data.id){
+            m.title = data.title;
+            m.content = data.content;
+          }
+        })
+        return curentUser;
+      });
+
+    
+    })
+  }
+
+  const clickChange = (memo:{ title: string , id: number }) => {
+    setTempTitle(memo.title);
+    setEditingId(memo.id);
+  }
+
   const memos = user?.memos.map((memo) => (
     <div key={memo.id} className='memo'>
-      <p>{memo.title}</p>
+      <div>
+        { memo.id !== editingId ? (
+            <p onClick={()=>{
+              clickChange(memo)
+            }}>{memo.title}</p>
+          ) : (
+            <input type="text" value={tempTitle} onChange={(e)=>{setTempTitle(e.target.value)}} onBlur={
+              () => {
+                clickChange(memo)
+                updateMemo({id :memo.id ,title: tempTitle, content: memo.content})
+              }
+            }/>
+          )}
+      </div>
       <p>{memo.content}</p>
       <button onClick={()=>{
         deleteMemo(memo.id)
