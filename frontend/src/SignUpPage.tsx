@@ -4,7 +4,7 @@ import React, {} from 'react';
 export function SignUpPage() {
 
   const singUp = () => {
-    console.log('singUp');
+    console.log('SignUp');
   }
 
   return (
