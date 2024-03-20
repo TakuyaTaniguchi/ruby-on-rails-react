@@ -6,7 +6,6 @@ export function UserDetailComponent() {
   const [user, setUser] = useState<{ id: string, name: string, memos: { id: number ,user_id: number ,title:string ,content: string }[] } | null>(null); // userの状態を管理
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [isChange, setIsChange] = useState(true);
   const [editingId, setEditingId] = useState(null as number | null);
   const [tempTitle, setTempTitle] = useState("");
   const HTMLTitleInput = useRef<HTMLInputElement>(null);
