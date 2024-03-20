@@ -96,3 +96,62 @@ footer {
   text-align: center;
   padding: 16px;
 }
+
+
+/* singUp */
+
+.sing-up {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+}
+
+.form-wrap{
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-label {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.form-input {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.form-submit {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #009688;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+/* modfire */
+.mt-20 {
+  margin-top: 20px;
+}
