@@ -11,6 +11,9 @@ export function Header() {
         <nav>
           <ul className='header-ul'>
             <li>
+              <Link to={`/memos`}>Memos</Link>
+            </li>
+            <li>
               <Link to={`/`}>Home</Link>
             </li>
             <li>
@@ -22,9 +25,7 @@ export function Header() {
             <li>
               <Link to={`/setting`}>Setting</Link>
             </li>
-            <li>
-              <Link to={`/memos`}>Memos</Link>
-            </li>
+
           </ul>
         </nav>
       </div>

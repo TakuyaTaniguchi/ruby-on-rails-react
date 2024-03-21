@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Route , Routes } from 'react-router-dom';
 import { Header, Footer } from './layout'
 
 // component
-// import { UserDetailComponent } from "./UserDetail";
+import { UserDetailComponent } from "./UserDetail";
 
 
 function App() {
@@ -22,14 +22,12 @@ function App() {
           <Header/>
           <div className='App-body'>
             <Routes>
+              <Route path="/memos" element={<div>Memos</div>} />
               <Route path="/" element={<MyPageComponent />} />
               <Route path="/sign_up" element={<SignUpPage/>} />
               <Route path="/login" element={<LoginPage/>} />
               <Route path="/setting" element={<div>Setting</div>} />
-              <Route path="/memos" element={<div>Memos</div>} />
-
-
-              {/* <Route path="/user/:id" element={<UserDetailComponent/>} /> */}
+              <Route path="/user/:id" element={<UserDetailComponent/>} />
             </Routes>
           </div>
           <Footer/>
