@@ -100,7 +100,7 @@ footer {
 
 /* Form */
 
-.sing-up, .login .setting {
+.sing-up, .login, .setting {
   display: flex;
   flex-direction: column;
   justify-content: center;
