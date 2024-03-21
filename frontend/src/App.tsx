@@ -2,7 +2,9 @@ import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
 
-import { SignUpPage } from "./SignUpPage"
+import { SignUpPage } from "./page/SignUpPage"
+import { LoginPage } from "./page/LoginPage"
+
 import { MyPageComponent } from "./MyPage"
 import { BrowserRouter as Router, Route , Routes } from 'react-router-dom';
 
@@ -22,7 +24,7 @@ function App() {
             <Routes>
               <Route path="/" element={<MyPageComponent />} />
               <Route path="/sign_up" element={<SignUpPage/>} />
-              <Route path="/login" element={<div>Login</div>} />
+              <Route path="/login" element={<LoginPage/>} />
               <Route path="/setting" element={<div>Setting</div>} />
               <Route path="/memos" element={<div>Memos</div>} />
 

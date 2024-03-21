@@ -98,15 +98,15 @@ footer {
 }
 
 
-/* singUp */
+/* Form */
 
-.sing-up {
+.sing-up, .login {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 12px;
-  padding: 12px;
+  padding: 32px;
 }
 
 .form-wrap{
@@ -148,6 +148,19 @@ footer {
   cursor: pointer;
   text-align: center;
   font-weight: bold;
+}
+
+.forget-password {
+  text-align: center;
+  font-weight: bold;
+}
+
+.forget-password a {
+  color: #009688;
+}
+
+.forget-password a:hover {
+  text-decoration: underline;
 }
 
 
