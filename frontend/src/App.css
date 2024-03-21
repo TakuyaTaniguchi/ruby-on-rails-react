@@ -126,6 +126,10 @@ footer {
   gap: 12px;
 }
 
+.form-section + .form-section {
+  margin-top: 20px;
+}
+
 .form-label {
   font-size: 18px;
   font-weight: bold;

@@ -20,7 +20,7 @@ export function LoginPage() {
             <label className='form-label' htmlFor="password">Password</label>
             <input className='form-input' type="password" id="password" name="password" />
           </div>
-          <div className='form-section mt-20'>
+          <div className='form-section'>
             <button onClick={login} className='form-submit' type="submit">Login</button>
           </div>
         </div>
