@@ -100,7 +100,7 @@ footer {
 
 /* Form */
 
-.sing-up, .login {
+.sing-up, .login .setting {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -167,6 +167,36 @@ footer {
   text-decoration: underline;
 }
 
+/* setting */
+
+.setting {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 32px;
+}
+
+.section {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.section + .section {
+  margin-top: 20px;
+}
+
+.head {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.body {
+  display: flex;
+  gap: 12px;
+}
 
 /* modfire */
 .mt-20 {

@@ -4,6 +4,9 @@ import './App.css';
 
 import { SignUpPage } from "./page/SignUpPage"
 import { LoginPage } from "./page/LoginPage"
+import { SettingPage } from "./page/Setting"
+import { MemoPage } from './page/Memo'
+
 
 import { MyPageComponent } from "./MyPage"
 import { BrowserRouter as Router, Route , Routes } from 'react-router-dom';
@@ -22,11 +25,11 @@ function App() {
           <Header/>
           <div className='App-body'>
             <Routes>
-              <Route path="/memos" element={<div>Memos</div>} />
+              <Route path="/memos" element={<MemoPage/>} />
               <Route path="/" element={<MyPageComponent />} />
               <Route path="/sign_up" element={<SignUpPage/>} />
               <Route path="/login" element={<LoginPage/>} />
-              <Route path="/setting" element={<div>Setting</div>} />
+              <Route path="/setting" element={<SettingPage/>} />
               <Route path="/user/:id" element={<UserDetailComponent/>} />
             </Routes>
           </div>
