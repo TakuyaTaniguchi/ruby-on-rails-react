@@ -18,7 +18,20 @@ export function LoginPage() {
       }),
     }).then(response => {
       if (response.ok) {
-        console.log('Login Success');
+        // レスポンスヘッダーから新しい認証情報を取得して更新
+        const headers = response.headers;
+        const accessToken = headers.get('access-token');
+        if (accessToken) {
+          localStorage.setItem('access-token', accessToken);
+        }
+        const client = headers.get('client');
+        if (client) {
+          localStorage.setItem('client', client);
+        }
+        const uid = headers.get('uid');
+        if (uid) {
+          localStorage.setItem('uid', uid);
+        }
         // <UsersComponent />
       } else {
         console.log('Login Failed');

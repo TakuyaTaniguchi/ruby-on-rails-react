@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import React, { useEffect } from 'react';
 // import { UsersComponent } from "./User";
 
 export function SettingPage() {
@@ -6,6 +6,23 @@ export function SettingPage() {
   const nickname = 'nickname';
   const mailAddress = 'mailAddress';
   const icon = 'icon';
+
+  useEffect(() => {
+    fetch('http://localhost:3000/users/me',{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'access-token': localStorage.getItem('access-token') ||'',
+        'client': localStorage.getItem('client')||'',
+        'uid': localStorage.getItem('uid')||'',
+      },
+    })
+      .then(response => response.json()) // レスポンスをJSONに変換
+      .then(data => {
+        console.log(data); // データをセット
+      })
+      .catch(error => console.error('Error:', error));
+  })
 
 
   return (
