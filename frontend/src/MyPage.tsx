@@ -1,46 +1,45 @@
-import React, { useState } from 'react';
+import React, { } from 'react';
 import { UsersComponent } from "./User";
 
 export function MyPageComponent() {
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [userId, setUserID] = useState(0);
+  // const [name, setName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [userId, setUserID] = useState(0);
 
   // ユーザーを登録
-  const addUser = () => {
+  // const addUser = () => {
 
-    // userIdが0の場合は新規登録
-    if(userId === 0){
-      fetch('http://localhost:3000/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name: name, email: email , password: password}),
-      })
-    } else {
-      // userIdが0でない場合は更新
-      fetch(`http://localhost:3000/users/${userId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name: name, email: email , password: password}),
-      })
-    }
+  //   // userIdが0の場合は新規登録
+  //   if(userId === 0){
+  //     fetch('http://localhost:3000/users', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ name: name, email: email , password: password}),
+  //     })
+  //   } else {
+  //     // userIdが0でない場合は更新
+  //     fetch(`http://localhost:3000/users/${userId}`, {
+  //       method: 'PUT',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ name: name, email: email , password: password}),
+  //     })
+  //   }
+  // };
 
-  };
-
-  const deleteUser = () => {
-    fetch(`http://localhost:3000/users/${userId}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-  }
+  // const deleteUser = () => {
+  //   fetch(`http://localhost:3000/users/${userId}`, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   })
+  // }
 
 
   return (
@@ -49,7 +48,7 @@ export function MyPageComponent() {
       <p>ユーザー情報</p>
       <UsersComponent />
 
-      <div>
+      {/* <div>
         <h3>ユーザーフォーム</h3>
         <div>
         <div>
@@ -71,7 +70,7 @@ export function MyPageComponent() {
           <button type="submit" onClick={addUser}>登録</button>
           <button type="submit" onClick={deleteUser}>削除</button>
           </div>
-      </div>
+      </div> */}
     </div>
   );
 }
