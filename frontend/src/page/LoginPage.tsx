@@ -1,10 +1,29 @@
-import React, {} from 'react';
+import React, { useState } from 'react';
 // import { UsersComponent } from "./User";
 
 export function LoginPage() {
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const login = () => {
-    console.log('login');
+    fetch('http://localhost:3000/auth/sign_in', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
+        email: email, 
+        password: password,
+      }),
+    }).then(response => {
+      if (response.ok) {
+        console.log('Login Success');
+        // <UsersComponent />
+      } else {
+        console.log('Login Failed');
+      }
+    })
   }
 
   return (
@@ -14,11 +33,11 @@ export function LoginPage() {
         <div className='form-wrap'>
           <div className='form-section'>
             <label className='form-label' htmlFor="email">Email</label>
-            <input className='form-input' type="email" id="email" name="email" />
+            <input className='form-input' value={email} onChange={(e)=>{setEmail(e.target.value)}} type="email" id="email" name="email" />
           </div>
           <div className='form-section'>
             <label className='form-label' htmlFor="password">Password</label>
-            <input className='form-input' type="password" id="password" name="password" />
+            <input className='form-input' value={password} onChange={(e)=>{setPassword(e.target.value)}} type="password" id="password" name="password" />
           </div>
           <div className='form-section'>
             <button onClick={login} className='form-submit' type="submit">Login</button>
