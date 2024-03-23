@@ -184,6 +184,10 @@ footer {
   align-items: center;
 }
 
+.setting,.section {
+font-size: 16px;
+}
+
 .section + .section {
   margin-top: 20px;
 }
@@ -198,7 +202,28 @@ footer {
   gap: 12px;
 }
 
+.icon {
+  font-size: 24px;
+  width: 120px;
+  height: 120px;
+}
+
 /* modfire */
+
+.buttin-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
 .mt-20 {
   margin-top: 20px;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+.harf {
+  width: 50%;
 }
