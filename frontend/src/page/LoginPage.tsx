@@ -42,6 +42,13 @@ export function LoginPage() {
     })
   }
 
+  const logout = () => {
+    localStorage.removeItem('access-token');
+    localStorage.removeItem('client');
+    localStorage.removeItem('uid');
+    navigate('/sign_up');
+  }
+
   return (
     <div>
       <div className='login'>
@@ -57,12 +64,14 @@ export function LoginPage() {
           </div>
           <div className='form-section'>
             <button onClick={login} className='form-submit' type="submit">Login</button>
+            <button onClick={logout} className='form-submit mt-20'>Logout</button>
           </div>
         </div>
       </div>
       <div className='forget-password'>
         <a href='/'>forget Password</a>
       </div>
+
     </div>
   );
 }
