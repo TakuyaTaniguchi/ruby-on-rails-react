@@ -12,6 +12,7 @@ export function SettingPage() {
 
   const HTMLNameInput = useRef<HTMLInputElement>(null);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [user, setUser] = useState({
     id: 0,
     email: '',
@@ -49,7 +50,6 @@ export function SettingPage() {
   },[])
 
   // ユーザー情報変更
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const updateUser = () => {
     fetch(`http://localhost:3000/auth/`, {
       method: 'PUT',
@@ -60,9 +60,9 @@ export function SettingPage() {
         'uid': localStorage.getItem('uid')||'',
       },
       body: JSON.stringify({ 
-        name: user.name,
-        nickname: user.nickname,
-        image: user.image,
+        name: name,
+        nickname: nickname,
+        image: image,
       }),
     }).then(response => {
       if (response.ok) {
@@ -82,7 +82,10 @@ export function SettingPage() {
       </div>
       <div className='form-wrap'>
         <div className='section'>
+          { image ? (
             <div className='body icon'><img src={image} /></div>
+          ) : (  <input className='form-input' type="text" onChange={(e)=>{setImage(e.target.value)}} value={image}></input>
+          )}
         </div>
         <div className='section'>
             <div className='head'>名前</div>
@@ -106,17 +109,14 @@ export function SettingPage() {
         </div>
         <div className='section'>
           <div className='head'>メールアドレス</div>
-          {
-            isEdiitng ? (
-              <div className='body'>
-                <input className='form-input' type="text" onChange={(e)=>{setEmail(e.target.value)}} value={email}></input>
-              </div>
-              ) : ( <div className='body'>{email}</div>)
-          }
+           <div className='body'>{email}</div>
         </div>
         <div className='buttin-wrap mt-20'>
           <button className='form-submit harf' onClick={() =>{setIsEditing(!isEdiitng)}}>Edit</button>
-          <button className='form-submit harf' onClick={() =>{setIsEditing(!isEdiitng)}}>Update</button>
+          <button className='form-submit harf' onClick={() =>{
+            setIsEditing(!isEdiitng)
+            updateUser()
+            }}>Update</button>
         </div>
       </div>
     </div>
