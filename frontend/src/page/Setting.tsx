@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import apiClient from '../domain/apiClient';
 // import { UsersComponent } from "./User";
 
 export function SettingPage() {
@@ -12,41 +13,20 @@ export function SettingPage() {
 
   const HTMLNameInput = useRef<HTMLInputElement>(null);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [user, setUser] = useState({
-    id: 0,
-    email: '',
-    provider: '',
-    uid: '',
-    allow_password_change: false,
-    name: '',
-    nickname: '',
-    image: '',
-    created_at: '',
-    updated_at: '',
-    memos: [],
-  });
-
   useEffect(() => {
-    fetch('http://localhost:3000/users/show',{
+   apiClient({
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'access-token': localStorage.getItem('access-token') ||'',
-        'client': localStorage.getItem('client')||'',
-        'uid': localStorage.getItem('uid')||'',
-      },
-    })
-      .then(response => response.json()) // レスポンスをJSONに変換
-      .then(data => {
-        setUser(data);
-        console.log(data);
-        setEmail(data.email);
-        setName(data.name);
-        setNickname(data.nickname);
-        setImage(data.image);
-      })
-      .catch(error => console.error('Error:', error));
+      path: 'users/show',
+      requestAuth: true,
+      request: {},
+   }).then((response) => {
+      setEmail(response.email);
+      setName(response.name);
+      setNickname(response.nickname);
+      setImage(response.image);
+   }).catch((error) => {
+      console.error('Error:', error);
+   })
   },[])
 
   // ユーザー情報変更
