@@ -6,7 +6,6 @@ import { loginContext } from '../App';
 export function Header() {
 
   const login = useContext(loginContext);
-  console.log(login)
 
   return (
     <header>
