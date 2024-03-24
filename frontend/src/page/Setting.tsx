@@ -28,7 +28,7 @@ export function SettingPage() {
   });
 
   useEffect(() => {
-    fetch('http://localhost:3000/users/me',{
+    fetch('http://localhost:3000/users/show',{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

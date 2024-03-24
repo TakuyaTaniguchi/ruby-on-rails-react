@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth'
   resources :groups
+  resources :users
   # resources :users do
   #   resources :memos
   #   get 'me', on: :collection
