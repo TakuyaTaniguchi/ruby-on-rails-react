@@ -14,9 +14,6 @@ export function Header() {
               <Link to={`/memos`}>Memos</Link>
             </li>
             <li>
-              <Link to={`/`}>Home</Link>
-            </li>
-            <li>
               <Link to={`/sign_up`}>Sign Up</Link>
             </li>
             <li>
