@@ -49,6 +49,7 @@
 .user-detail {
   display: flex;
   justify-content: space-around;
+  padding: 20px;
 }
 
 .memo-area{
@@ -221,7 +222,7 @@ font-size: 16px;
 /* memo */
 
 .memo-wrap{
-  padding: 32px;
+  /* padding: 32px; */
 }
 
 .memo-layout {
@@ -229,6 +230,10 @@ font-size: 16px;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+.create-memo {
+  /* padding: 32px; */
 }
 
 /* modfire */

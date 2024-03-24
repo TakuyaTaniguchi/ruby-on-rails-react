@@ -95,7 +95,7 @@ export function MemoPage() {
   return (
     <div className="user-detail">
 
-      <div className="user-detail-info">
+      <div className="memo-wrap">
           <div className='memo-contents'>
             {
             memos ? (
@@ -156,8 +156,8 @@ export function MemoPage() {
       <div className='create-memo'>
         <button onClick={createMemo}>メモを作る</button>
         <div className='memo-area'>
-          <input className='form-input' type="text" name="title" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
-          <textarea className='form-textarea' name="content" value={content} onChange={(e)=>{setContent(e.target.value)}} />
+          <input className='form-input mt-20' type="text" name="title" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+          <textarea className='form-textarea mt-20' name="content" value={content} onChange={(e)=>{setContent(e.target.value)}} />
         </div>
       </div>
     </div>
