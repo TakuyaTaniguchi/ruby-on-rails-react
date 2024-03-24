@@ -20,7 +20,7 @@
 
 .App-body {
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: #F9F9F9;
 }
 
@@ -63,6 +63,8 @@
 }
 
 .memo{
+  min-height: 200px;
+  min-width: 200px;
   padding: 12px;
   background-color: lemonchiffon;
 }
@@ -206,6 +208,19 @@ font-size: 16px;
   font-size: 24px;
   width: 120px;
   height: 120px;
+}
+
+/* memo */
+
+.memo-wrap{
+  padding: 32px;
+}
+
+.memo-layout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 /* modfire */

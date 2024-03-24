@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 // import { UsersComponent } from "./User";
-
+import { useNavigate } from 'react-router-dom';
+ 
 export function LoginPage() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
 
   const login = () => {
     fetch('http://localhost:3000/auth/sign_in', {
@@ -32,7 +35,7 @@ export function LoginPage() {
         if (uid) {
           localStorage.setItem('uid', uid);
         }
-        // <UsersComponent />
+        navigate('/memos');
       } else {
         console.log('Login Failed');
       }
