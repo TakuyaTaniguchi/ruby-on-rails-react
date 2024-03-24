@@ -109,7 +109,7 @@ export function MemoPage() {
                           }}
                           >{memo.title ? memo.title : 'blank'}</p>
                         ) : (
-                          <input ref={HTMLTitleInput} type="text" value={tempTitle} onChange={(e)=>{setTempTitle(e.target.value)}} onBlur={
+                          <input className='form-input' ref={HTMLTitleInput} type="text" value={tempTitle} onChange={(e)=>{setTempTitle(e.target.value)}} onBlur={
                             () => {
                               clickChange(memo)
                               updateMemo({id :memo.id ,title: tempTitle, content: tempContent})
@@ -124,12 +124,21 @@ export function MemoPage() {
                         }}
                         >{memo.content ? memo.content : 'blank'}</p>
                       ) : (
-                        <textarea value={tempContent} onChange={(e)=>{setTempContent(e.target.value)}} onBlur={
+                        <textarea className='form-textarea' value={tempContent} onChange={(e)=>{setTempContent(e.target.value)}} onBlur={
                           () => {
                             clickChange(memo)
                             updateMemo({id :memo.id ,title: memo.title, content: tempContent})
                           }
                         }/>
+                      )}
+                    </div>
+                    <div>
+                      { memo.id !== editingId ? (
+                        null
+                      ) : (
+                        <button className='form-submit harf' onClick={()=>{
+                          updateMemo({id :memo.id ,title: memo.title, content: tempContent})
+                        }}>Edit</button>
                       )}
                     </div>
                     <button onClick={()=>{
@@ -147,8 +156,8 @@ export function MemoPage() {
       <div className='create-memo'>
         <button onClick={createMemo}>メモを作る</button>
         <div className='memo-area'>
-          <input type="text" name="title" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
-          <textarea name="content" value={content} onChange={(e)=>{setContent(e.target.value)}} />
+          <input className='form-input' type="text" name="title" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+          <textarea className='form-textarea' name="content" value={content} onChange={(e)=>{setContent(e.target.value)}} />
         </div>
       </div>
     </div>
