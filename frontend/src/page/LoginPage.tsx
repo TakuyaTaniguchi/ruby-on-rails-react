@@ -23,15 +23,11 @@ export function LoginPage() {
         // レスポンスヘッダーから新しい認証情報を取得して更新
         const headers = response.headers;
         const accessToken = headers.get('access-token');
-        if (accessToken) {
-          localStorage.setItem('access-token', accessToken);
-        }
         const client = headers.get('client');
-        if (client) {
-          localStorage.setItem('client', client);
-        }
         const uid = headers.get('uid');
-        if (uid) {
+        if (accessToken && client && uid) {
+          localStorage.setItem('access-token', accessToken);
+          localStorage.setItem('client', client);
           localStorage.setItem('uid', uid);
         }
         navigate('/memos');
