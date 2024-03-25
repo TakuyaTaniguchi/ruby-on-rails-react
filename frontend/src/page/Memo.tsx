@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
+import apiClient from '../domain/apiClient';
+
 // import { useParams } from 'react-router-dom';
 
 
@@ -13,46 +15,38 @@ export function MemoPage() {
   const HTMLTitleInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/memos`,{
+    apiClient({
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'access-token': localStorage.getItem('access-token') ||'',
-        'client': localStorage.getItem('client')||'',
-        'uid': localStorage.getItem('uid')||'',
-      }
+      path: 'memos',
+      requestAuth: true,
+      request: {},
+    }).then((response) => {
+      setMemos(response);
+    }).catch((error) => {
+      console.error('Error:', error);
     })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setMemos(data); // 取得したデータでuserの状態を更新
-      })
-      .catch(error => console.error('Error:', error));
   },[])
 
   const createMemo = () => {
-    fetch(`http://localhost:3000/memos`, {
+    apiClient({
+      path: 'memos',
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'access-token': localStorage.getItem('access-token') ||'',
-        'client': localStorage.getItem('client')||'',
-        'uid': localStorage.getItem('uid')||'',
-      },
-      body: JSON.stringify({ title: title, content: content}),
+      request: { title: title, content: content },
+      requestAuth: true,
+    }).finally(() => {
+      window.location.reload();
     })
   }
 
   const deleteMemo = (id: number) => {
     if (window.confirm("メモを削除しますか？")) {
-      fetch(`http://localhost:3000/memos/${id}`, {
+      apiClient({
+        path: `memos/${id}`,
         method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          'access-token': localStorage.getItem('access-token') ||'',
-          'client': localStorage.getItem('client')||'',
-          'uid': localStorage.getItem('uid')||'',
-        },
+        request: {},
+        requestAuth: true,
+      }).finally(() => {
+        window.location.reload();
       })
     } 
   }
@@ -60,29 +54,26 @@ export function MemoPage() {
   const updateMemo = (memo: {id:number, title :string ,content: string}) => {
     setEditingId(null);
 
-    fetch(`http://localhost:3000/memos/${memo.id}`, {
+    apiClient({
+      path: `memos/${memo.id}`,
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'access-token': localStorage.getItem('access-token') ||'',
-        'client': localStorage.getItem('client')||'',
-        'uid': localStorage.getItem('uid')||'',
-      },
-      body: JSON.stringify({ title: memo.title, content: memo.content}),
-    }).then(response => response.json())
-    .then(data => {
+      request: { title: memo.title, content: memo.content },
+      requestAuth: true,
+    }).then((response) => {
       setMemos((curentMemos) => {
         if (!curentMemos) return [];
 
         const updateMemos = curentMemos.map((m) => {
-          if (m.id === data.id) {
-            return {...m, title: data.title, content: data.content}
+          if (m.id === response.id) {
+            return {...m, title: response.title, content: response.content}
           }
           return m;
         })
 
         return updateMemos
       });    
+    }).catch((error) => {
+      console.error('Error:', error);
     })
   }
 

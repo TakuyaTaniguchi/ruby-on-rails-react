@@ -59,7 +59,7 @@
 
 .memo-contents{
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
