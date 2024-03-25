@@ -24,7 +24,6 @@ export function SignUpPage() {
       },
       extendOption: true,
     }).then(response => {
-      console.log(response);
       if (response.ok) {
         console.log('Sign Up Success');
         navigate('/login');
@@ -33,25 +32,7 @@ export function SignUpPage() {
       }
     })
 
-    // fetch('http://localhost:3000/auth', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ 
-    //     email: email, 
-    //     password: password, 
-    //     password_confirmation: passwordConfirmation,
-    //     confirm_success_url: 'http://localhost:4000/login'
-    //   }),
-    // }).then(response => {
-    //   if (response.ok) {
-    //     console.log('Sign Up Success');
-    //     navigate('/login');
-    //   } else {
-    //     console.log('Sign Up Failed');
-    //   }
-    // })
+
   }
 
   return (

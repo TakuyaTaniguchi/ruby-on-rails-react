@@ -49,27 +49,6 @@ export function SettingPage() {
       }
     })
 
-
-    // fetch(`http://localhost:3000/auth/`, {
-    //   method: 'PUT',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'access-token': localStorage.getItem('access-token') ||'',
-    //     'client': localStorage.getItem('client')||'',
-    //     'uid': localStorage.getItem('uid')||'',
-    //   },
-    //   body: JSON.stringify({ 
-    //     name: name,
-    //     nickname: nickname,
-    //     image: image,
-    //   }),
-    // }).then(response => {
-    //   if (response.ok) {
-    //     console.log('Update Success');
-    //   } else {
-    //     console.log('Update Failed');
-    //   }
-    // })
   }
 
 // https://getavataaars.com/

@@ -19,7 +19,6 @@ export function LoginPage() {
       request: { email: email, password: password },
       extendOption: true,
     }).then(response => {
-      console.log(response);
       if (response.ok) {
         // レスポンスヘッダーから新しい認証情報を取得して更新
         const headers = response.headers;
