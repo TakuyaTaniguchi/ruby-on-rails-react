@@ -28,7 +28,7 @@ class MemosController < ApplicationController
 
   def destroy
     @memo.destroy
-    head :no_content
+    render json: @memo
   end
 
   private

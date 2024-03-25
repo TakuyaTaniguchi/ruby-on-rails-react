@@ -33,8 +33,10 @@ export function MemoPage() {
       method: 'POST',
       request: { title: title, content: content },
       requestAuth: true,
-    }).finally(() => {
-      window.location.reload();
+    }).then((response) => {
+      setMemos((currentMemos) => {
+        return [...currentMemos, response];
+      })
     })
   }
 
@@ -45,8 +47,8 @@ export function MemoPage() {
         method: 'DELETE',
         request: {},
         requestAuth: true,
-      }).finally(() => {
-        window.location.reload();
+      }).then(() => {
+        setMemos(currentMemos => currentMemos.filter(memo => memo.id !== id));
       })
     } 
   }
