@@ -12,7 +12,6 @@ export function MemoPage() {
   const [tempTitle, setTempTitle] = useState("");
   const [tempContent, setTempContent] = useState("");
   const [memos, setMemos] = useState([] as { id: number ,user_id: number ,title:string ,content: string }[]);
-  const HTMLTitleInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     apiClient({
@@ -102,7 +101,7 @@ export function MemoPage() {
                           }}
                           >{memo.title ? memo.title : 'blank'}</p>
                         ) : (
-                          <input className='form-input' ref={HTMLTitleInput} type="text" value={tempTitle} onChange={(e)=>{setTempTitle(e.target.value)}} onBlur={
+                          <input className='form-input' type="text" value={tempTitle} onChange={(e)=>{setTempTitle(e.target.value)}} onBlur={
                             () => {
                               clickChange(memo)
                               updateMemo({id :memo.id ,title: tempTitle, content: tempContent})
