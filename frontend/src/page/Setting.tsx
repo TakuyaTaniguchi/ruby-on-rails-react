@@ -31,26 +31,45 @@ export function SettingPage() {
 
   // ユーザー情報変更
   const updateUser = () => {
-    fetch(`http://localhost:3000/auth/`, {
+
+    apiClient({
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'access-token': localStorage.getItem('access-token') ||'',
-        'client': localStorage.getItem('client')||'',
-        'uid': localStorage.getItem('uid')||'',
-      },
-      body: JSON.stringify({ 
+      path: 'auth',
+      requestAuth: true,
+      request: { 
         name: name,
         nickname: nickname,
         image: image,
-      }),
+      },
     }).then(response => {
-      if (response.ok) {
+      if (response) {
         console.log('Update Success');
       } else {
         console.log('Update Failed');
       }
     })
+
+
+    // fetch(`http://localhost:3000/auth/`, {
+    //   method: 'PUT',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'access-token': localStorage.getItem('access-token') ||'',
+    //     'client': localStorage.getItem('client')||'',
+    //     'uid': localStorage.getItem('uid')||'',
+    //   },
+    //   body: JSON.stringify({ 
+    //     name: name,
+    //     nickname: nickname,
+    //     image: image,
+    //   }),
+    // }).then(response => {
+    //   if (response.ok) {
+    //     console.log('Update Success');
+    //   } else {
+    //     console.log('Update Failed');
+    //   }
+    // })
   }
 
 // https://getavataaars.com/
