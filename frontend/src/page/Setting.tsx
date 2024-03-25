@@ -4,8 +4,8 @@ import apiClient from '../domain/apiClient';
 
 export function SettingPage() {
 
-  const [name, setName] = useState('');
-  const [nickname, setNickname] = useState('');
+  const [name, setName] = useState('初期値');
+  const [nickname, setNickname] = useState('初期値');
   const [image, setImage] = useState('');
   const [email, setEmail] = useState('');
 
@@ -20,10 +20,10 @@ export function SettingPage() {
       requestAuth: true,
       request: {},
    }).then((response) => {
-      setEmail(response.email);
-      setName(response.name);
-      setNickname(response.nickname);
-      setImage(response.image);
+      setEmail(response.email || '');
+      setName(response.name || '');
+      setNickname(response.nickname || '');
+      setImage(response.image || '');
    }).catch((error) => {
       console.error('Error:', error);
    })

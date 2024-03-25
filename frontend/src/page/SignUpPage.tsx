@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import apiClient from '../domain/apiClient';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -10,18 +11,20 @@ export function SignUpPage() {
   const navigate = useNavigate();
 
   const singUp = () => {
-    fetch('http://localhost:3000/auth', {
+
+    apiClient({
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ 
+      path: 'auth',
+      requestAuth: false,
+      request: { 
         email: email, 
         password: password, 
         password_confirmation: passwordConfirmation,
         confirm_success_url: 'http://localhost:4000/login'
-      }),
+      },
+      extendOption: true,
     }).then(response => {
+      console.log(response);
       if (response.ok) {
         console.log('Sign Up Success');
         navigate('/login');
@@ -29,6 +32,26 @@ export function SignUpPage() {
         console.log('Sign Up Failed');
       }
     })
+
+    // fetch('http://localhost:3000/auth', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({ 
+    //     email: email, 
+    //     password: password, 
+    //     password_confirmation: passwordConfirmation,
+    //     confirm_success_url: 'http://localhost:4000/login'
+    //   }),
+    // }).then(response => {
+    //   if (response.ok) {
+    //     console.log('Sign Up Success');
+    //     navigate('/login');
+    //   } else {
+    //     console.log('Sign Up Failed');
+    //   }
+    // })
   }
 
   return (

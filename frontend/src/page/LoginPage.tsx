@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { UsersComponent } from "./User";
+import apiClient from '../domain/apiClient';
 import { useNavigate } from 'react-router-dom';
  
 export function LoginPage() {
@@ -10,16 +10,16 @@ export function LoginPage() {
 
 
   const login = () => {
-    fetch('http://localhost:3000/auth/sign_in', {
+
+
+    apiClient({
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ 
-        email: email, 
-        password: password,
-      }),
+      path: 'auth/sign_in',
+      requestAuth: false,
+      request: { email: email, password: password },
+      extendOption: true,
     }).then(response => {
+      console.log(response);
       if (response.ok) {
         // レスポンスヘッダーから新しい認証情報を取得して更新
         const headers = response.headers;
