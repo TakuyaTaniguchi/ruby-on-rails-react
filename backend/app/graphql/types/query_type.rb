@@ -41,6 +41,18 @@ module Types
     ['Hello GraphQL', 'Hello World']
   end
 
+  # all_usersフィールドを追加
+  field :all_users, [Types::UserType], null: false, description: "Returns a list of all users"
+
+  # all_usersフィールドのリゾルバーメソッド
+  def all_users
+    User.all
+  end
+
+  field :me, Types::UserType, null: false, description: "Returns a user"
+  def me
+    context[:current_user]
+  end
 
   end
 end

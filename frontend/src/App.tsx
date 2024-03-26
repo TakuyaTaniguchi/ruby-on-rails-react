@@ -26,6 +26,22 @@ const TEST_QUERY = gql`
   }
 `;
 
+const USER_QUERY = gql`
+  query UserQuery {
+    me {
+      id
+      name
+    }
+  }
+`;
+
+type UserQueryResult = {
+  me: {
+    id: string;
+    name: string;
+  }
+}
+
 
 
 type TestQueryResult = {
@@ -35,12 +51,16 @@ type TestQueryResult = {
 
 function App() {
   const { loading, error, data } = useQuery<TestQueryResult>(TEST_QUERY);
+  const { loading: userDataLoad, error: userDataError, data: userData } = useQuery<UserQueryResult>(USER_QUERY);
   const login = useContext(loginContext);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading && userDataLoad) return <p>Loading...</p>;
+  if (error && userDataError) return <p>Error :</p>;
 
-  console.log(data);
+  console.log(userData,'userData');
+
+
+  // console.log(data);
 
   return (
     <div className="App">

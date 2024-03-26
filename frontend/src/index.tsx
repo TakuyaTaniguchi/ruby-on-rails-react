@@ -4,10 +4,32 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider , createHttpLink} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3000/graphql/',
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  // const token = localStorage.getItem('token');
+  const accessToken = localStorage.getItem('access-token') ?? ''
+  const client = localStorage.getItem('client') ?? ''
+  const uid = localStorage.getItem('uid')?? ''
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      'access-token': accessToken,
+      'client': client,
+      'uid': uid,
+    }
+  }
+});
 
 const client = new ApolloClient({
-  uri: 'http://localhost:3000/graphql',
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 });
 
