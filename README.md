@@ -14,6 +14,7 @@ cd backend
 bin/bundle install
 bin/rails db:migrate
 bin/rails server
+
 ```
 
 ## frontend
@@ -22,5 +23,7 @@ cd frontend
 yarn install
 yarn start
 ```
+
+
 
 ※ ポートが衝突する場合は`.env`でポートを変更してください
