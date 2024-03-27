@@ -14,50 +14,14 @@ import './App.css';
 // util
 import { isLogin } from './util/isLogin'
 
-import { gql, useQuery } from '@apollo/client';
+
 
 export const loginContext = createContext(isLogin());
 
-// GraphQLクエリとその結果の型を定義
-const TEST_QUERY = gql`
-  query TestQuery {
-    testSample,
-    testField
-  }
-`;
-
-const USER_QUERY = gql`
-  query UserQuery {
-    me {
-      id
-      name
-    }
-  }
-`;
-
-type UserQueryResult = {
-  me: {
-    id: string;
-    name: string;
-  }
-}
-
-
-
-type TestQueryResult = {
-  testSample: string;
-  testField: string;
-};
 
 function App() {
-  const { loading, error, data } = useQuery<TestQueryResult>(TEST_QUERY);
-  const { loading: userDataLoad, error: userDataError, data: userData } = useQuery<UserQueryResult>(USER_QUERY);
   const login = useContext(loginContext);
 
-  if (loading && userDataLoad) return <p>Loading...</p>;
-  if (error && userDataError) return <p>Error :</p>;
-
-  console.log(userData,'userData');
 
 
   // console.log(data);
@@ -68,7 +32,6 @@ function App() {
         <Router>
             <Header/>
             <div className='App-body'>
-            <div>{data?.testSample}:apollo</div>
               <Routes>
                 <Route path="/memos" element={<MemoPage/>} />
                 <Route path="/sign_up" element={<SignUpPage/>} />
