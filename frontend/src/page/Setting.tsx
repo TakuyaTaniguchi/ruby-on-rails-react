@@ -1,8 +1,58 @@
 import React, { useEffect, useState, useRef } from 'react';
-import apiClient from '../domain/apiClient';
-// import { UsersComponent } from "./User";
+// import apiClient from '../domain/apiClient';
+import { gql, useQuery, useMutation } from '@apollo/client';
+
+const GET_USER = gql`
+  query GetUser {
+    me {
+      id
+      name
+      nickname
+      email
+      image
+    }
+  }
+  `;
+
+type UserQueryResult = {
+  me: {
+    id: string;
+    name: string;
+    nickname: string;
+    email: string;
+    image: string;
+  }
+}
+const UPDATE_USER = gql`
+  mutation UpdateUer($name: String!, $nickname: String!, $image: String!) {
+    updateUser(input: { name: $name, nickname: $nickname, image: $image }) {
+      user {
+        id
+        name
+        nickname
+        email
+        image
+      }
+    }
+  }
+`;
+
+type UpdateUserMutationResult = { 
+  updateUser: {
+    user: {
+      id: string;
+      name: string;
+      nickname: string;
+      email: string;
+      image: string;
+    }
+  }
+}
+
 
 export function SettingPage() {
+  const { loading, data: userData } = useQuery<UserQueryResult>(GET_USER);
+  const [ mutationUpdateUser ] = useMutation<UpdateUserMutationResult>(UPDATE_USER);
 
   const [name, setName] = useState('初期値');
   const [nickname, setNickname] = useState('初期値');
@@ -14,33 +64,18 @@ export function SettingPage() {
   const HTMLNameInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-   apiClient({
-      method: 'GET',
-      path: 'users/show',
-      requestAuth: true,
-      request: {},
-   }).then((response) => {
-      setEmail(response.email || '');
-      setName(response.name || '');
-      setNickname(response.nickname || '');
-      setImage(response.image || '');
-   }).catch((error) => {
-      console.error('Error:', error);
-   })
-  },[])
+    if (userData) {
+      setName(userData.me.name);
+      setNickname(userData.me.nickname);
+      setImage(userData.me.image);
+      setEmail(userData.me.email);
+    } 
+  }, [userData])
 
-  // ユーザー情報変更
-  const updateUser = () => {
 
-    apiClient({
-      method: 'PUT',
-      path: 'auth',
-      requestAuth: true,
-      request: { 
-        name: name,
-        nickname: nickname,
-        image: image,
-      },
+  const updateUser = () =>{
+    mutationUpdateUser({
+      variables: { name: name, nickname: nickname, image: image },
     }).then(response => {
       if (response) {
         console.log('Update Success');
@@ -48,10 +83,10 @@ export function SettingPage() {
         console.log('Update Failed');
       }
     })
-
   }
 
 // https://getavataaars.com/
+  if (loading && userData) return <p>Loading...</p>;
 
   return (
     <div className='setting'>
