@@ -1,5 +1,4 @@
 import React, {} from 'react';
-// import { UsersComponent } from "./User";
 
 export function Footer() {
 
