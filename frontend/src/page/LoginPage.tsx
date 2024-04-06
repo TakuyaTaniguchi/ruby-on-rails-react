@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import apiClient from '../domain/apiClient';
 import { useNavigate } from 'react-router-dom';
 // import { gql, useQuery, useMutation } from '@apollo/client';
- 
+import { LayoutStyleDiv } from '../css/design';
 
 
 
@@ -50,7 +50,7 @@ export function LoginPage() {
 
   return (
     <div>
-      <div className='login'>
+      <LayoutStyleDiv className='login'>
         <h1 className='form-title'>Login</h1>
         <div className='form-wrap'>
           <div className='form-section'>
@@ -66,7 +66,7 @@ export function LoginPage() {
             <button onClick={logout} className='form-submit mt-20'>Logout</button>
           </div>
         </div>
-      </div>
+      </LayoutStyleDiv>
       <div className='forget-password'>
         <a href='/'>forget Password</a>
       </div>
