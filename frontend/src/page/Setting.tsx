@@ -1,11 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { gql, useQuery, useMutation } from '@apollo/client';
-import { styled } from 'styled-components';
-import { layoutStyle } from '../css/design';
+import { LayoutStyleDiv } from '../css/design';
 
-const Setting =  styled.div `
-  ${layoutStyle}
-`
 
 const GET_USER = gql`
   query GetUser {
@@ -94,7 +90,7 @@ export function SettingPage() {
   if (loading && userData) return <p>Loading...</p>;
 
   return (
-    <Setting>
+    <LayoutStyleDiv>
       <div>
         <h1 className='form-title'>Setting</h1>
       </div>
@@ -137,6 +133,6 @@ export function SettingPage() {
             }}>Update</button>
         </div>
       </div>
-    </Setting>
+    </LayoutStyleDiv>
   );
 }
