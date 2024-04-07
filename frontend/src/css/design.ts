@@ -11,3 +11,12 @@ const layoutStyleCss = css`
 export const LayoutStyleDiv = styled.div`
   ${layoutStyleCss}
 `
+
+const formTileCss = css`
+font-size: 24px;
+font-weight: bold;
+`
+
+export const FormTitleH1 = styled.h1`
+  ${formTileCss}
+  `

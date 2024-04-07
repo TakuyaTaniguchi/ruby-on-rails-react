@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import apiClient from '../domain/apiClient';
 import { useNavigate } from 'react-router-dom';
 // import { gql, useQuery, useMutation } from '@apollo/client';
-import { LayoutStyleDiv } from '../css/design';
+import { LayoutStyleDiv, FormTitleH1 } from '../css/design';
 
 
 
@@ -51,7 +51,7 @@ export function LoginPage() {
   return (
     <div>
       <LayoutStyleDiv className='login'>
-        <h1 className='form-title'>Login</h1>
+        <FormTitleH1>Login</FormTitleH1>
         <div className='form-wrap'>
           <div className='form-section'>
             <label className='form-label' htmlFor="email">Email</label>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { gql, useQuery, useMutation } from '@apollo/client';
-import { LayoutStyleDiv } from '../css/design';
+import { LayoutStyleDiv, FormTitleH1 } from '../css/design';
 
 
 const GET_USER = gql`
@@ -92,7 +92,7 @@ export function SettingPage() {
   return (
     <LayoutStyleDiv>
       <div>
-        <h1 className='form-title'>Setting</h1>
+        <FormTitleH1 className='form-title'>Setting</FormTitleH1>
       </div>
       <div className='form-wrap'>
         <div className='section'>
