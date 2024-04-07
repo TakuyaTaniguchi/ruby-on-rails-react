@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import apiClient from '../domain/apiClient';
 import { useNavigate } from 'react-router-dom';
 // import { gql, useQuery, useMutation } from '@apollo/client';
-import { LayoutStyleDiv, FormTitleH1 } from '../css/design';
+import { LayoutStyleDiv, FormTitleH1, FormWrapDiv , FormSectionDiv} from '../css/design';
 
 
 
@@ -52,20 +52,20 @@ export function LoginPage() {
     <div>
       <LayoutStyleDiv className='login'>
         <FormTitleH1>Login</FormTitleH1>
-        <div className='form-wrap'>
-          <div className='form-section'>
+        <FormWrapDiv>
+          <FormSectionDiv>
             <label className='form-label' htmlFor="email">Email</label>
             <input className='form-input' value={email} onChange={(e)=>{setEmail(e.target.value)}} type="email" id="email" name="email" />
-          </div>
-          <div className='form-section'>
+          </FormSectionDiv>
+          <FormSectionDiv>
             <label className='form-label' htmlFor="password">Password</label>
             <input className='form-input' value={password} onChange={(e)=>{setPassword(e.target.value)}} type="password" id="password" name="password" />
-          </div>
-          <div className='form-section'>
+          </FormSectionDiv>
+          <FormSectionDiv>
             <button onClick={login} className='form-submit' type="submit">Login</button>
             <button onClick={logout} className='form-submit mt-20'>Logout</button>
-          </div>
-        </div>
+          </FormSectionDiv>
+        </FormWrapDiv>
       </LayoutStyleDiv>
       <div className='forget-password'>
         <a href='/'>forget Password</a>
