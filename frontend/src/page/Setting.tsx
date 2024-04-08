@@ -2,10 +2,15 @@ import React, { useEffect, useState, useRef } from 'react';
 import { gql, useQuery, useMutation } from '@apollo/client';
 import { LayoutStyleDiv, FormTitleH1 } from '../css/design';
 
+// デバックメモ
+// ネットワークタブで確認する
+// queryのプロパティ名がcurrentUserの場合、query_type.rbにcurrent_userで定義されている可能性がある。
 
+
+// meはログインユーザーの情報を取得する ここがrailsに当たるfield :me, Types::UserType, null: true
 const GET_USER = gql`
-  query GetUser {
-    me {
+  query GetUsaaaer {
+    me { 
       id
       name
       nickname
