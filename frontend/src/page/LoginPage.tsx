@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import apiClient from '../domain/apiClient';
 import { useNavigate } from 'react-router-dom';
 // import { gql, useQuery, useMutation } from '@apollo/client';
-import { LayoutStyleDiv, FormTitleH1, FormWrapDiv , FormSectionDiv ,FormLabelLabel} from '../css/design';
+import { LayoutStyleDiv, FormTitleH1, FormWrapDiv , FormSectionDiv ,FormLabelLabel, FormInputInput} from '../css/design';
 
 
 
@@ -55,7 +55,7 @@ export function LoginPage() {
         <FormWrapDiv>
           <FormSectionDiv>
             <FormLabelLabel htmlFor="email">Email</FormLabelLabel>
-            <input className='form-input' value={email} onChange={(e)=>{setEmail(e.target.value)}} type="email" id="email" name="email" />
+            <FormInputInput value={email} onChange={(e)=>{setEmail(e.target.value)}} type="email" id="email" name="email" />
           </FormSectionDiv>
           <FormSectionDiv>
             <label className='form-label' htmlFor="password">Password</label>

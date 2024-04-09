@@ -24,14 +24,20 @@ display: flex;
 flex-direction: column;
 gap: 12px;
 & + & {
-  margin-top: 24px;
+  margin-top: 20px;
 }
 `
 
 const formLabelCss = css`
-display: flex;
-flex-direction: column;
-gap: 12px;
+font-size: 18px;
+font-weight: bold;
+`
+
+const formInputCss = css`
+padding: 8px;
+font-size: 16px;
+border-radius: 4px;
+border: 1px solid #ccc;
 `
 
 const LayoutStyleDiv = styled.div`
@@ -53,5 +59,9 @@ const FormLabelLabel = styled.label`
   ${formLabelCss}
 `
 
+const FormInputInput = styled.input`
+  ${formInputCss}
+`
 
-  export { LayoutStyleDiv, FormTitleH1, FormWrapDiv , FormSectionDiv, FormLabelLabel }
+
+  export { LayoutStyleDiv, FormTitleH1, FormWrapDiv , FormSectionDiv, FormLabelLabel, FormInputInput }
