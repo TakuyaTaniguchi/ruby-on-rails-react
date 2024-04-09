@@ -23,6 +23,15 @@ const formSectionCss = css`
 display: flex;
 flex-direction: column;
 gap: 12px;
+& + & {
+  margin-top: 24px;
+}
+`
+
+const formLabelCss = css`
+display: flex;
+flex-direction: column;
+gap: 12px;
 `
 
 const LayoutStyleDiv = styled.div`
@@ -40,5 +49,9 @@ const FormSectionDiv = styled.div`
   ${formSectionCss}
 `
 
+const FormLabelLabel = styled.label`
+  ${formLabelCss}
+`
 
-  export { LayoutStyleDiv, FormTitleH1, FormWrapDiv , FormSectionDiv }
+
+  export { LayoutStyleDiv, FormTitleH1, FormWrapDiv , FormSectionDiv, FormLabelLabel }
