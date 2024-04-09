@@ -59,7 +59,9 @@ const FormLabelLabel = styled.label`
   ${formLabelCss}
 `
 
-const FormInputInput = styled.input`
+const FormInputInput = styled('input').withConfig({
+  displayName: 'FormInputInput',
+})`
   ${formInputCss}
 `
 
