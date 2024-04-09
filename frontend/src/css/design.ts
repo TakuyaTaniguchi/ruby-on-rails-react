@@ -55,7 +55,9 @@ const FormSectionDiv = styled.div`
   ${formSectionCss}
 `
 
-const FormLabelLabel = styled.label`
+const FormLabelLabel = styled.label.withConfig({
+  displayName: 'FormLabelLabel',
+  })`
   ${formLabelCss}
 `
 
