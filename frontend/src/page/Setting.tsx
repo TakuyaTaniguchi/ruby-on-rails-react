@@ -97,7 +97,7 @@ export function SettingPage() {
   return (
     <LayoutStyleDiv>
       <div>
-        <FormTitleH1 className='form-title'>Setting</FormTitleH1>
+        <FormTitleH1>Setting</FormTitleH1>
       </div>
       <div className='form-wrap'>
         <div className='section'>

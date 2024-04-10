@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import apiClient from '../domain/apiClient';
 import { useNavigate } from 'react-router-dom';
+import { FormTitleH1 } from '../css/design';
+
 
 
 export function SignUpPage() {
@@ -38,7 +40,7 @@ export function SignUpPage() {
   return (
     <div>
       <div className='sing-up'>
-        <h1 className='form-title'>Sign Up</h1>
+        <FormTitleH1>Sign Up</FormTitleH1>
         <div className='form-wrap'>
           <div className='form-section'>
             <label className='form-label' htmlFor="email">Email</label>
