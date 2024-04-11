@@ -54,7 +54,7 @@ export function SignUpPage() {
             <label className='form-label' htmlFor="passwordConfirmation">Password Confirmation</label>
             <input className='form-input' value={passwordConfirmation} onChange={(e)=>{setPasswordConfirmation(e.target.value)}}  type="password" id="passwordConfirmation" name="passwordConfirmation" />
           </FormSectionDiv>
-          <FormSectionDiv className='form-section mt-20'>
+          <FormSectionDiv className='mt-20'>
             <button onClick={singUp} className='form-submit' type="submit">Sign Up</button>
           </FormSectionDiv>
         </FormWrapDiv>
