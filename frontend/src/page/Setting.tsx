@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { gql, useQuery, useMutation } from '@apollo/client';
-import { LayoutStyleDiv, FormTitleH1 } from '../css/design';
+import { LayoutStyleDiv, FormTitleH1, FormWrapDiv } from '../css/design';
 
 // デバックメモ
 // ネットワークタブで確認する
@@ -99,7 +99,7 @@ export function SettingPage() {
       <div>
         <FormTitleH1>Setting</FormTitleH1>
       </div>
-      <div className='form-wrap'>
+      <FormWrapDiv>
         <div className='section'>
           { image ? (
             <div className='body icon'><img src={image} /></div>
@@ -137,7 +137,7 @@ export function SettingPage() {
             updateUser()
             }}>Update</button>
         </div>
-      </div>
+      </FormWrapDiv>
     </LayoutStyleDiv>
   );
 }

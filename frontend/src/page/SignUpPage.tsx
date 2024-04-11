@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import apiClient from '../domain/apiClient';
 import { useNavigate } from 'react-router-dom';
-import { FormTitleH1 } from '../css/design';
+import { FormTitleH1, FormWrapDiv, FormSectionDiv } from '../css/design';
 
 
 
@@ -41,23 +41,23 @@ export function SignUpPage() {
     <div>
       <div className='sing-up'>
         <FormTitleH1>Sign Up</FormTitleH1>
-        <div className='form-wrap'>
-          <div className='form-section'>
+        <FormWrapDiv>
+          <FormSectionDiv>
             <label className='form-label' htmlFor="email">Email</label>
             <input className='form-input' value={email} onChange={(e)=>{setEmail(e.target.value)}} type="email" id="email" name="email" />
-          </div>
-          <div className='form-section'>
+          </FormSectionDiv>
+          <FormSectionDiv>
             <label className='form-label' htmlFor="password">Password</label>
             <input className='form-input' value={password} onChange={(e)=>{setPassword(e.target.value)}} type="password" id="password" name="password" />
-          </div>
-          <div className='form-section'>
+          </FormSectionDiv>
+          <FormSectionDiv>
             <label className='form-label' htmlFor="passwordConfirmation">Password Confirmation</label>
             <input className='form-input' value={passwordConfirmation} onChange={(e)=>{setPasswordConfirmation(e.target.value)}}  type="password" id="passwordConfirmation" name="passwordConfirmation" />
-          </div>
-          <div className='form-section mt-20'>
+          </FormSectionDiv>
+          <FormSectionDiv className='form-section mt-20'>
             <button onClick={singUp} className='form-submit' type="submit">Sign Up</button>
-          </div>
-        </div>
+          </FormSectionDiv>
+        </FormWrapDiv>
       </div>
     </div>
   );
