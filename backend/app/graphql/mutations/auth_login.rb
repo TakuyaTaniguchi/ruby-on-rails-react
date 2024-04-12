@@ -1,5 +1,5 @@
 module Types
-  class AuthLoginInput < Types::BaseInputObject
+  class AuthLoginInputAdmin < Types::BaseInputObject
     argument :email, String, required: true
     argument :password, String, required: true
   end
@@ -7,7 +7,7 @@ end
 
 module Mutations
   class AuthLogin < BaseMutation
-    argument :input, Types::AuthLoginInput, required: true
+    argument :input, Types::AuthLoginInputAdmin, required: true
     def resolve(input:)
 
       email = input[:email]
