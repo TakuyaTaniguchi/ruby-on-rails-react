@@ -28,6 +28,7 @@ export function SignUpPage() {
     }).then(response => {
       if (response.ok) {
         console.log('Sign Up Success');
+        console.log(response);
         navigate('/login');
       } else {
         console.log('Sign Up Failed');
