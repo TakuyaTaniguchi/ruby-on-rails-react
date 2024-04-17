@@ -1,4 +1,18 @@
 import React from 'react';
+import whyDidYouRender from '@welldone-software/why-did-you-render';
+
+if (process.env.NODE_ENV === 'development') {
+  whyDidYouRender(React, {
+    trackAllPureComponents: true,
+    trackHooks: true,
+    logOnDifferentValues: true,
+    collapseGroups: true,
+    onlyLogs: true,
+    include: [/^./],
+    exclude: [/^Connect/]
+  });
+}
+
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';

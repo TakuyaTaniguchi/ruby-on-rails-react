@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { gql, useQuery, useMutation } from '@apollo/client';
 import { LayoutStyleDiv, FormTitleH1, FormWrapDiv } from '../css/design';
 
+import  { Sample } from '../badperformance/notProosRender';
+
 // デバックメモ
 // ネットワークタブで確認する
 // queryのプロパティ名がcurrentUserの場合、query_type.rbにcurrent_userで定義されている可能性がある。
@@ -98,6 +100,7 @@ export function SettingPage() {
     <LayoutStyleDiv>
       <div>
         <FormTitleH1>Setting</FormTitleH1>
+        <Sample />
       </div>
       <FormWrapDiv>
         <div className='section'>
@@ -141,3 +144,6 @@ export function SettingPage() {
     </LayoutStyleDiv>
   );
 }
+
+
+SettingPage.whyDidYouRender = true;
