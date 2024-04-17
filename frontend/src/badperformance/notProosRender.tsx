@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+// これを例にして用法を見る
+// https://medium.com/welldone-software/why-did-you-render-mr-big-pure-react-component-part-2-common-fixing-scenarios-667bfdec2e0f
+
 
 export function Sample() {
   const [count, setCount] = useState(0);
