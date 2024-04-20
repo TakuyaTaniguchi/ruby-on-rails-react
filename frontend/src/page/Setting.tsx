@@ -9,7 +9,6 @@ import  { Sample } from '../badperformance/notProosRender';
 // queryのプロパティ名がcurrentUserの場合、query_type.rbにcurrent_userで定義されている可能性がある。
 
 
-
 // meはログインユーザーの情報を取得する ここがrailsに当たるfield :me, Types::UserType, null: true
 const GET_USER = gql`
   query GetUsaaaer {
