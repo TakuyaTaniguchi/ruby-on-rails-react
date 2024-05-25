@@ -9,6 +9,7 @@ import { SignUpPage } from "./page/SignUpPage"
 import { LoginPage } from "./page/LoginPage"
 import { SettingPage } from "./page/Setting"
 import { MemoPage } from './page/Memo'
+import { PaymentPage } from './page/Payment'
 // css
 import './App.css';
 // util
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/sign_up" element={<SignUpPage/>} />
                 <Route path="/login" element={<LoginPage/>} />
                 <Route path="/setting" element={<SettingPage/>} />
+                <Route path="/payment" element={<PaymentPage/>} />
               </Routes>
             </div>
             <Footer/>
