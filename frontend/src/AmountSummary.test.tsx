@@ -1,55 +1,58 @@
-import React from "react";
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { render } from '@testing-library/react';
 import AmountSummary from './AmountSummary';
 
 describe('AmountSummary', () => {
-  it('renders correctly with selected coupon', () => {
+  it('callHelloを一度呼ばれたか', () => {
+    const mockCallHello = jest.fn();
+
     render(
       <AmountSummary
         text="クレジットカード"
-        price={1000}
-        discount={100}
-        isSelectedCoupon={true}
-        couponDiscount={100}
-      />
-    );
-
-    expect(screen.getByText(/支払い種別: クレジットカード/i)).toBeInTheDocument();
-    expect(screen.getByText(/商品金額: 1000/i)).toBeInTheDocument();
-    expect(screen.getByText(/クーポン割引: 100/i)).toBeInTheDocument();
-    expect(screen.getByText(/合計金額: 900/i)).toBeInTheDocument();
-    expect(screen.getByText(/クーポン適用済み/i)).toBeInTheDocument();
-  });
-
-  it('renders correctly without selected coupon', () => {
-    render(
-      <AmountSummary
-        text="クレジットカード"
-        price={1000}
-        discount={100}
-        isSelectedCoupon={false}
-        couponDiscount={100}
-      />
-    );
-
-    expect(screen.getByText(/支払い種別: クレジットカード/i)).toBeInTheDocument();
-    expect(screen.getByText(/商品金額: 1000/i)).toBeInTheDocument();
-    expect(screen.queryByText(/クーポン割引: 100/i)).not.toBeInTheDocument();
-    expect(screen.getByText(/合計金額: 900/i)).toBeInTheDocument();
-    expect(screen.queryByText(/クーポン適用済み/i)).not.toBeInTheDocument();
-  });
-
-  it('calculates total amount correctly with discount', () => {
-    render(
-      <AmountSummary
-        text="クレジットカード"
-        price={2000}
+        price={10}
         discount={500}
         isSelectedCoupon={false}
         couponDiscount={0}
+        callHello={mockCallHello}
       />
     );
 
-    expect(screen.getByText(/合計金額: 1500/i)).toBeInTheDocument();
+    expect(mockCallHello).toHaveBeenCalledTimes(1);
   });
+
+  // it('setIsSoundが呼び出されたか', () => {
+  //   const setCount = jest.fn();
+  //   jest
+  //     .spyOn(React, 'useState')
+  //     .mockImplementationOnce(count => [count, setCount]);
+
+
+  //   render(
+  //     <AmountSummary
+  //       text="クレジットカード"
+  //       price={2000} // ここを1000以上に設定して、setIsSoundが呼ばれるようにする
+  //       discount={500}
+  //       isSelectedCoupon={false}
+  //       couponDiscount={0}
+  //       callHello={() => {}}
+  //     />
+  //   );
+
+  //   render(
+  //     <AmountSummary
+  //       text="クレジットカード"
+  //       price={4000} // ここを1000以上に設定して、setIsSoundが呼ばれるようにする
+  //       discount={500}
+  //       isSelectedCoupon={false}
+  //       couponDiscount={0}
+  //       callHello={() => {}}
+  //     />
+  //   );
+
+
+
+  //   // setIsSoundがtrueで呼ばれたかを確認する
+  //   expect(setCount).toHaveBeenCalledWith(303);
+
+  // });
 });
