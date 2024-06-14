@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import apiClient from '../domain/apiClient';
-
+import { CounterComponent } from '../CounterComponent';
+import { doubleCount } from '../util/doubleCount';
 // import { useParams } from 'react-router-dom';
 
 
@@ -78,6 +79,8 @@ export function MemoPage() {
     })
   }
 
+  doubleCount(2)
+
   const clickChange = (memo:{ title: string , id: number , content: string}) => {
     setTempTitle(memo.title);
     setTempContent(memo.content);
@@ -86,7 +89,7 @@ export function MemoPage() {
 
   return (
     <div className="user-detail">
-
+      <CounterComponent />
       <div className="memo-wrap">
           <div className='memo-contents'>
             {
