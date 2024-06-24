@@ -10,7 +10,7 @@ import { LoginPage } from "./page/LoginPage"
 import { SettingPage } from "./page/Setting"
 import { MemoPage } from './page/Memo'
 import { PaymentPage } from './page/Payment'
-import { LearnPage } from './page/Learn'
+import  LearnPage  from './page/Learn'
 // css
 import './App.css';
 // util
