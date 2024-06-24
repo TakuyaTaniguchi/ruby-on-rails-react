@@ -25,6 +25,9 @@ export function Header() {
             <li>
               <Link to={`/payment`}>Payment</Link>
             </li>
+            <li>
+              <Link to={`/learn`}>Learn</Link>
+            </li>
           </ul>
         </nav>
       </div>

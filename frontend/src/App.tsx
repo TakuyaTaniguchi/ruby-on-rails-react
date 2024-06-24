@@ -10,6 +10,7 @@ import { LoginPage } from "./page/LoginPage"
 import { SettingPage } from "./page/Setting"
 import { MemoPage } from './page/Memo'
 import { PaymentPage } from './page/Payment'
+import { LearnPage } from './page/Learn'
 // css
 import './App.css';
 // util
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/login" element={<LoginPage/>} />
                 <Route path="/setting" element={<SettingPage/>} />
                 <Route path="/payment" element={<PaymentPage/>} />
+                <Route path="/learn" element={<LearnPage/>} />
               </Routes>
             </div>
             <Footer/>
